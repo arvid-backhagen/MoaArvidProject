@@ -193,6 +193,7 @@
 	height: auto;
 	max-height: 270px;
 	overflow-y: scroll;
+	margin-top: 20px;
 }
 
 #numberOfGuests {

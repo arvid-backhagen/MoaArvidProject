@@ -3,7 +3,7 @@
   "private": true,
   "name": "pokedex",
   "description": "Project in interaction programming",
-  "repository": "https://github.com/RasmusFredrikson/intprog-project.git",
+  "repository": "https://github.com/arvidlarzzon/MoaArvidProject",
   "license": "MIT",
   "engines": {
     "node": "7.6.0"

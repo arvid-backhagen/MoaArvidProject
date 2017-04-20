@@ -57,6 +57,10 @@ pokemonPlannerApp.config(['$routeProvider',
             templateUrl: 'partials/battle.html',
             controller: 'BattleCtrl'
         }).
+        when('/history', {
+            templateUrl: 'partials/history.html',
+            controller: 'HistoryCtrl'
+        }).
         otherwise({
             redirectTo: '/home'
         });
