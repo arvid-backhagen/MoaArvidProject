@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "private": true,
+  "name": "pokedex",
+  "description": "Project in interaction programming",
+  "repository": "https://github.com/RasmusFredrikson/intprog-project.git",
+  "license": "MIT",
+  "engines": {
+    "node": "7.6.0"
+  },
+  "devDependencies": {
+    "http-server": "^0.9.0",
+    "bower": "^1.8.x"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+    "prestart": "npm install",
+    "start": "http-server app/ -a 0.0.0.0 -p 8000"
+  },
+  "dependencies": {
+    "firebase": "^3.7.3",
+    "bower": "^1.8.0",
+    "http-server": "^0.9.0"
+  }
+}
