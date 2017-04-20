@@ -1,2 +1,2 @@
 # MoaArvidProject
-Moa and Arvid expands the project of Rasmus and Sofia.
+Moa and Arvid expands the pokedex-project
