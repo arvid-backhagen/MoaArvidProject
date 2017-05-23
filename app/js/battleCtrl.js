@@ -24,9 +24,6 @@ pokemonPlannerApp.controller('BattleCtrl', function ($scope,Pokemon,$firebaseObj
     var refStatus = firebase.database().ref().child("settings/status");
     $scope.status = $firebaseObject(refStatus);
 
-    $scope.battleAnimation = function() {
-
-    }
 
     $scope.playAttack = function() {
         var audio = new Audio('../audio/sound-reset.m4a');

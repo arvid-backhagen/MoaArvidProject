@@ -15,10 +15,12 @@ pokemonPlannerApp.factory('Pokemon',function ($resource, $timeout) {
         databaseURL: "https://pokedex-baee2.firebaseio.com/",
         storageBucket: "pokedex-baee2.appspot.com"
     };
+    
     firebase.initializeApp(config);
-
-    // Get a reference to the database service
+    
     var database = firebase.database();
+
+
 
     this.setPlayer = function(newPlayer){
         player = newPlayer;

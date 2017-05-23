@@ -1,3 +1,5 @@
+
+
 <div class="container-fluid">
 	<div class="row text-center">
 		<div class="panel panel-danger ">
@@ -5,7 +7,10 @@
 				<h3 ng-if="victor.player == null">{{printTurn()}} turn to make a move...</h3>
 				<div ng-if="victor.player == 1 || victor.player == 2">
 					<h3 class="padding20 paddingtop0">Player {{victor.player}} won!</h3>
-					<a  ng-click="reset(false); playConfirm(); playTheme()" class="btn-danger btn-lg margin20" href="#!/search"> Return to Pokédex and check History!</a>
+					<a  ng-click="reset(false); playConfirm(); playTheme()" class="btn-danger btn-lg margin20" href="#!/search"> Return to Pokédex!</a>
+
+					<a class="btn btn-success btn-lg" href="#!/history" role="button" id="confirmDinner">
+		See history</a>	
 				</div>
 			</div>
 			<div class="panel-body">
@@ -27,7 +32,7 @@
 			<div class="row">
 				<div ng-repeat="move in myPokemon.pokemon.moves.slice(0,2)">
 					<div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
-						<button href="" class="btn-group-justified btn btn-primary btn-lg" ng-click="playerAttacks(move.name); playAttack(); battleAnimation()" ng-disabled="checkTurn()">{{move.name}}: {{getAttackDmg(move.name)}}</button>
+						<button href="" class="btn-group-justified btn btn-primary btn-lg" ng-click="playerAttacks(move.name); playAttack(); blink()" ng-disabled="checkTurn()">{{move.name}}: {{getAttackDmg(move.name)}}</button>
 					</div>
 				</div>
 			</div>
@@ -50,7 +55,20 @@
 			<div class="row">
 				<progress id="health" class="text-center" value={{checkStatus()}} max="100"></progress>
 			</div>
+
+
+  
+
+    		
 			<img class="img30" ng-src="../images/{{opponentPokemon.pokemon.national_id}}.png" alt={{opponentPokemon.pokemon.name}}>
+
+
+
+
+		
+				
+	
+	
 		</div>
 	</div>
 </div>
