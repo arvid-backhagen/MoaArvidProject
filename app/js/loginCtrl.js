@@ -9,13 +9,12 @@ pokemonPlannerApp.controller('LoginCtrl', function ($scope,Pokemon, $firebaseObj
 
 		if (email != "" && pass != "") {
 			var promise = userDatabase.signInWithEmailAndPassword(email, pass)
-			var user = userDatabase.currentUser;
-			console.log("current user: " + user)
 			promise.catch(e => alert(e.message));
 			
-			userDatabase.onAuthStateChanged(function(firebaseUser) {
+			userDatabase.onAuthStateChanged(function(user) {
 			
-				if(firebaseUser == user) {
+				if(user) {
+					Pokemon.setUser(user);
 					$location.path( "/home" );
 				}
 				else {

@@ -9,6 +9,8 @@ pokemonPlannerApp.factory('Pokemon',function ($resource, $timeout) {
     // TODO: Replace with your project's config object
     var player = 0;
 
+    var user
+
     var config = {
         apiKey: "AIzaSyCopvBmpePv8mlx529uPfA2YZ9DJWve5qA",
         authDomain: "pokedex-baee2.firebaseapp.com",
@@ -20,7 +22,11 @@ pokemonPlannerApp.factory('Pokemon',function ($resource, $timeout) {
     
     var database = firebase.database();
 
-
+    this.setUser = function(newUser){
+        user = newUser.j;
+        console.log("Nu har vi satt en ny user i pokemonservice.js")
+        console.log(user);
+    }
 
     this.setPlayer = function(newPlayer){
         player = newPlayer;
