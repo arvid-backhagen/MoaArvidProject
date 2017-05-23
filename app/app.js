@@ -37,6 +37,10 @@ var pokemonPlannerApp = angular.module('pokemonPlanner', ['ngRoute','ngResource'
 pokemonPlannerApp.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
+        when('/login', {
+            templateUrl: 'partials/login.html',
+            controller: 'LoginCtrl'
+        }).
         when('/home', {
             templateUrl: 'partials/home.html',
             controller: 'HomeCtrl'
@@ -62,6 +66,6 @@ pokemonPlannerApp.config(['$routeProvider',
             controller: 'HistoryCtrl'
         }).
         otherwise({
-            redirectTo: '/home'
+            redirectTo: '/login'
         });
     }]);
