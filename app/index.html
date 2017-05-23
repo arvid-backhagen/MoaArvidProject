@@ -51,10 +51,16 @@
     ,footer, etc.). The rest of the view specific layout will go into the html partials (check partials folder) -->
 
     <nav class="navbar navbar-inverse">
+    <div class="col-md-8">
       <a class="navbar-brand" href="#">Pokémon Online</a>
       <p class="navbar-text">Gotta Catch 'Em All!</p>
+    </div>
+    <div class="col-md-3">
       <p class="navbar-text"><i>Logged in as EMAIL {{email}}</i></p>
+    </div>
+    <div class="col-md-1">
       <button id="logOutBtn" class="btn" ng-click="logout()"> Log out </button>
+    </div>
     </nav>
 
     <script>
