@@ -1,4 +1,7 @@
 /* Remove the navbar's default margin-bottom and rounded borders */ 
+#logOutBtn {
+	margin-top: 5px;
+}
 
 .navbar {
 	margin-bottom: 0;
