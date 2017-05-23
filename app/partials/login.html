@@ -12,7 +12,7 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
-button {
+.loginbtn {
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
@@ -81,7 +81,7 @@ span.psw {
     <input id="passw" type="password" placeholder="Enter Password" name="psw" required>
 
 
-    <button type="submit" ng-click="login()">Login</button>
+    <button class="loginbtn" type="submit" ng-click="login()">Login</button>
 
     <button class="cancelbtn" ng-click="signUp()">Sign up</button>
 

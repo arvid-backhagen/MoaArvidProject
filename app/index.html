@@ -53,9 +53,9 @@
     <nav class="navbar navbar-inverse">
       <a class="navbar-brand" href="#">Pokémon Online</a>
       <p class="navbar-text">Gotta Catch 'Em All!</p>
-      <p class="navbar-text">Logged in as {{email}}</p>
-      <button id="logOutBtn" ng-click="logout()"> Log out </button>
-  </nav>
+      <p class="navbar-text"><i>Logged in as EMAIL {{email}}</i></p>
+      <button id="logOutBtn" class="btn" ng-click="logout()"> Log out </button>
+    </nav>
 
     <script>
         document.getElementById("logOutBtn").addEventListener('click', e => {
