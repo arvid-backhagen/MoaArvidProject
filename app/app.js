@@ -65,6 +65,10 @@ pokemonPlannerApp.config(['$routeProvider',
             templateUrl: 'partials/history.html',
             controller: 'HistoryCtrl'
         }).
+         when('/main', {
+            templateUrl: 'index.html',
+            controller: 'MainCtrl'
+        }).
         otherwise({
             redirectTo: '/login'
         });

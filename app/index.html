@@ -31,9 +31,12 @@
         <!-- AngularFire -->
         <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
 
+
+
         <!-- The application JavaScript code -->
         <script src="app.js"></script>
         <script src="js/loginCtrl.js"></script>
+        <script src="js/mainCtrl.js"></script>
         <script src="js/infoCtrl.js"></script>
         <script src="js/pokemonService.js"></script>
         <script src="js/searchCtrl.js"></script>
@@ -48,21 +51,39 @@
     ,footer, etc.). The rest of the view specific layout will go into the html partials (check partials folder) -->
 
     <nav class="navbar navbar-inverse">
-    <div class="col-md-9">
+    <div class="col-md-8">
       <a class="navbar-brand" href="#">Pokémon Online</a>
       <p class="navbar-text">Gotta Catch 'Em All!</p>
     </div>
-    <div class="col-md-3">
-<<<<<<< HEAD
-      <p class="navbar-text"><i>Logged in as EMAIL</i></p>
-=======
-      <p class="navbar-text"><i>Logged in as {{firebase.auth().currentUser.email}}</i></p>
->>>>>>> 4422c1f1319225ad87a5908e6ac46915325e4b2a
-      <a id="logOutBtn" class="btn pull-right" href="#/login">Log out</a>
+    <div class="col-md-4" ng-controller="HomeCtrl" ng-if="online == true">
+
+        <div id="online">
+            <p class="navbar-text" ng-controller="HomeCtrl" ><i>Logged in as <b>{{currUser()}}</b></i></p>
+            <a id="logOutBtn" class="btn pull-right" href="#/login">Log out</a>
+        </div>
+
     </div>
+
     </nav>
 
+
     <script>
+
+       //("#loginHtml").load("login.html");    
+
+        //$("#online").hide();
+        
+       // $("#logInBtn").click(function(){
+        //    console.log("show");
+       // $("#online").show();
+        //});
+
+        //$("#logOutBtn").click(function(){
+        //    console.log("hide");
+        //$("#online").hide();
+        //});
+
+
         document.getElementById("logOutBtn").addEventListener('click', e => {
             console.log(firebase.auth().currentUser.email);
             firebase.auth().signOut().then(function(){
