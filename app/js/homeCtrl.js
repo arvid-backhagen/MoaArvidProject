@@ -2,6 +2,29 @@
 // display or modify the Movie menu
 pokemonPlannerApp.controller('HomeCtrl', function ($scope,Pokemon, $firebaseObject) {
 
+	$scope.online = false;
+
+	firebase.auth().onAuthStateChanged(function(user) {
+		console.log("i authstate");
+	    if (user) {
+	      	$scope.online = true;
+	      	console.log("true");
+	    } else {
+			$scope.online = false;
+			console.log("false")
+	    }
+	 });	
+
+	$scope.currUser = function() {
+		if (Pokemon.getUser() != null) {
+			return Pokemon.getUser().email;
+		}
+		else {
+			return null;
+		}
+	}
+	
+
 	// TODO in Lab 5: Implement the methods to get the Movie menu
 	var refPlayer = firebase.database().ref().child("settings/");
 	var player1 = $firebaseObject(refPlayer.child("1"));
