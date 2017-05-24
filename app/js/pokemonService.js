@@ -23,9 +23,13 @@ pokemonPlannerApp.factory('Pokemon',function ($resource, $timeout) {
     var database = firebase.database();
 
     this.setUser = function(newUser){
-        user = newUser.j;
+        user = newUser;
         console.log("Nu har vi satt en ny user i pokemonservice.js")
         console.log(user);
+    }
+
+    this.getUser = function(){
+        return user;
     }
 
     this.setPlayer = function(newPlayer){

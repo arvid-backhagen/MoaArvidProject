@@ -25,7 +25,7 @@ pokemonPlannerApp.controller('HomeCtrl', function ($scope,Pokemon, $firebaseObje
         audio.play();
     };
 
-     $scope.playTheme = function() {
+    $scope.playTheme = function() {
         var audio = new Audio('../audio/theme.mp3');
         audio.play();
     };

@@ -2,6 +2,23 @@ pokemonPlannerApp.controller('LoginCtrl', function ($scope,Pokemon, $firebaseObj
 
 	var userDatabase = firebase.auth();
 
+	var authFlag = false;
+	userDatabase.onAuthStateChanged(function(user) {
+
+		if(authFlag == false){
+			authFlag = true;
+		}
+		else{
+			if(user != null) {
+				console.log("if(user) gick igenom")
+				Pokemon.setUser(user);
+				$location.path( "/home" );
+			}
+			else {
+				console.log("not logged in");
+			}
+		}
+	});
 	//log in user
 	$scope.login = function() {
 		var email = $("#user").val();
@@ -10,19 +27,6 @@ pokemonPlannerApp.controller('LoginCtrl', function ($scope,Pokemon, $firebaseObj
 		if (email != "" && pass != "") {
 			var promise = userDatabase.signInWithEmailAndPassword(email, pass)
 			promise.catch(e => alert(e.message));
-			
-			userDatabase.onAuthStateChanged(function(user) {
-			
-				if(user) {
-					Pokemon.setUser(user);
-					$location.path( "/home" );
-				}
-				else {
-					console.log("not logged in");
-				}
-
-			});
-
 		}
 
 		else {
