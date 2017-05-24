@@ -42,9 +42,6 @@
         <script src="js/homeCtrl.js"></script>
         <script src="js/battleCtrl.js"></script>
         <script src="js/historyCtrl.js"></script>
-
-
-
     </head>
     <body>
     <!-- Here in index.html you should put only the layout that is shared among all the screens (e.g. header
@@ -56,7 +53,11 @@
       <p class="navbar-text">Gotta Catch 'Em All!</p>
     </div>
     <div class="col-md-3">
+<<<<<<< HEAD
       <p class="navbar-text"><i>Logged in as EMAIL</i></p>
+=======
+      <p class="navbar-text"><i>Logged in as {{firebase.auth().currentUser.email}}</i></p>
+>>>>>>> 4422c1f1319225ad87a5908e6ac46915325e4b2a
       <a id="logOutBtn" class="btn pull-right" href="#/login">Log out</a>
     </div>
     </nav>
@@ -67,8 +68,7 @@
             firebase.auth().signOut().then(function(){
                 // Personen har loggat ut gör nåt
             });
-            
-        })
+        });
     </script>
 
     <!-- ng-view Angular directive is where the partials will be loaded. app.js configures the $routingProvider

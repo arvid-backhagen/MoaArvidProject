@@ -4,7 +4,6 @@ pokemonPlannerApp.controller('LoginCtrl', function ($scope, Pokemon, $firebaseOb
 	//log in user
 	$scope.login = function() {
 		firebase.auth().signInWithEmailAndPassword($scope.email, $scope.password).then(function(user) {
-			console.log("inga problem att logga in");
 			Pokemon.setUser(user);
 			window.location = '#!/home';
 
@@ -19,7 +18,6 @@ pokemonPlannerApp.controller('LoginCtrl', function ($scope, Pokemon, $firebaseOb
 	$scope.signUp = function() {
 		firebase.auth().createUserWithEmailAndPassword($scope.email, $scope.password).then(function(user) {
 			firebase.auth().signInWithEmailAndPassword($scope.email, $scope.password).then(function(user) {
-				console.log("loggat in efter signup");
 				Pokemon.setUser(user);
 				window.location = '#!/home';
 
@@ -32,7 +30,6 @@ pokemonPlannerApp.controller('LoginCtrl', function ($scope, Pokemon, $firebaseOb
 		  	// Handle Errors here.
 		  	var errorCode = error.code;
 		  	var errorMessage = error.message;
-		  	console.log("signUp");
   			alert(errorMessage);
 		  	// ...
 		});
