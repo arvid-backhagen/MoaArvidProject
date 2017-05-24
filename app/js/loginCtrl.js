@@ -1,40 +1,34 @@
-pokemonPlannerApp.controller('LoginCtrl', function ($scope,Pokemon, $firebaseObject, $location) {
-
-	var authFlag = false;
-	firebase.auth().onAuthStateChanged(function(user) {
-
-		if(authFlag == false){
-			authFlag = true;
-		}
-		else{
-			if(user != null) {
-				console.log("if(user) gick igenom")
-				Pokemon.setUser(user);
-				$location.path( "/home" );
-			}
-			else {
-				console.log("not logged in");
-			}
-		}
-	});
+pokemonPlannerApp.controller('LoginCtrl', function ($scope, Pokemon, $firebaseObject, $location) {
 
 
 	//log in user
 	$scope.login = function() {
-		firebase.auth().signInWithEmailAndPassword($scope.email, $scope.password).catch(function(error) {
-  			// Handle Errors here.
-  			var errorCode = error.code;
-  			var errorMessage = error.message;
-  			console.log("logIn");
-  			alert(errorMessage);
-  			// ...
-		});
-		console.log("inga problem att logga in");
-	};
+		firebase.auth().signInWithEmailAndPassword($scope.email, $scope.password).then(function(user) {
+			console.log("inga problem att logga in");
+			Pokemon.setUser(user);
+			window.location = '#!/home';
+
+			}).catch(function(error) {
+				var errorMessage = error.message;
+				console.log(error);
+				alert(errorMessage);
+			});
+	}
 
 	//create new user
 	$scope.signUp = function() {
-		firebase.auth().createUserWithEmailAndPassword($scope.email, $scope.password).catch(function(error) {
+		firebase.auth().createUserWithEmailAndPassword($scope.email, $scope.password).then(function(user) {
+			firebase.auth().signInWithEmailAndPassword($scope.email, $scope.password).then(function(user) {
+				console.log("loggat in efter signup");
+				Pokemon.setUser(user);
+				window.location = '#!/home';
+
+				}).catch(function(error) {
+					var errorMessage = error.message;
+					console.log(error);
+					alert(errorMessage);
+				});
+		}).catch(function(error) {
 		  	// Handle Errors here.
 		  	var errorCode = error.code;
 		  	var errorMessage = error.message;
@@ -42,7 +36,5 @@ pokemonPlannerApp.controller('LoginCtrl', function ($scope,Pokemon, $firebaseObj
   			alert(errorMessage);
 		  	// ...
 		});
-		console.log("lyckades signa upp");
-		alert("Signed up! Now you can press the login button");
 	};
 });

@@ -56,15 +56,18 @@
       <p class="navbar-text">Gotta Catch 'Em All!</p>
     </div>
     <div class="col-md-3">
-      <p class="navbar-text" ng-if="currentUser != null"><i>Logged in as {Pokemon.checkUser()}}</i></p>
+      <p class="navbar-text"><i>Logged in as EMAIL</i></p>
       <a id="logOutBtn" class="btn pull-right" href="#/login">Log out</a>
     </div>
     </nav>
 
     <script>
         document.getElementById("logOutBtn").addEventListener('click', e => {
-            firebase.auth().signOut();
             console.log(firebase.auth().currentUser.email);
+            firebase.auth().signOut().then(function(){
+                // Personen har loggat ut gör nåt
+            });
+            
         })
     </script>
 
