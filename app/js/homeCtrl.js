@@ -2,8 +2,6 @@
 // display or modify the Movie menu
 pokemonPlannerApp.controller('HomeCtrl', function ($scope,Pokemon, $firebaseObject) {
 
-	console.log("Running HomeCtrl");
-
 	// TODO in Lab 5: Implement the methods to get the Movie menu
 	var refPlayer = firebase.database().ref().child("settings/");
 	var player1 = $firebaseObject(refPlayer.child("1"));

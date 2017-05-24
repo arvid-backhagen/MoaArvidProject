@@ -5,11 +5,13 @@
 // the next time.
 pokemonPlannerApp.factory('Pokemon',function ($resource, $timeout) {
 
+ 
+    
     // Set the configuration for your app
     // TODO: Replace with your project's config object
     var player = 0;
 
-    var user
+    var user;
 
     var config = {
         apiKey: "AIzaSyCopvBmpePv8mlx529uPfA2YZ9DJWve5qA",
@@ -23,9 +25,19 @@ pokemonPlannerApp.factory('Pokemon',function ($resource, $timeout) {
     var database = firebase.database();
 
     this.setUser = function(newUser){
-        user = newUser.j;
+        user = newUser;
         console.log("Nu har vi satt en ny user i pokemonservice.js")
-        console.log(user);
+    }
+
+    this.getUser = function() {
+        return user;
+    }
+
+    this.checkUser = function() {
+        if (getUser() == firebase.auth().currentUser) {
+            console.log("användarna matchar");
+            return getUser();
+        }
     }
 
     this.setPlayer = function(newPlayer){

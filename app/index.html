@@ -56,7 +56,7 @@
       <p class="navbar-text">Gotta Catch 'Em All!</p>
     </div>
     <div class="col-md-3">
-      <p class="navbar-text"><i>Logged in as EMAIL {{email}}</i></p>
+      <p class="navbar-text" ng-if="currentUser != null"><i>Logged in as {Pokemon.checkUser()}}</i></p>
       <a id="logOutBtn" class="btn pull-right" href="#/login">Log out</a>
     </div>
     </nav>
@@ -64,11 +64,9 @@
     <script>
         document.getElementById("logOutBtn").addEventListener('click', e => {
             firebase.auth().signOut();
-            console.log("signed out");
+            console.log(firebase.auth().currentUser.email);
         })
 
-
-        var user = firebase.auth().currentUser; // Här kan vi kanske skriva ut vilken current user är.
     </script>
 
     <!-- ng-view Angular directive is where the partials will be loaded. app.js configures the $routingProvider

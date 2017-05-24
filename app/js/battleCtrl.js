@@ -3,7 +3,7 @@
 pokemonPlannerApp.controller('BattleCtrl', function ($scope,Pokemon,$firebaseObject) {
     // TODO in Lab 5: you will need to implement a method that searchers for dishes
     // including the case while the search is still running.
-
+    
     var refMyPokemon = firebase.database().ref().child("players/" + Pokemon.getPlayer().toString() + "/chosenPokemon");
     $firebaseObject(refMyPokemon).$loaded().then(function() {
         $scope.myPokemon = $firebaseObject(refMyPokemon);
