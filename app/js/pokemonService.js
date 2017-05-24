@@ -4,8 +4,6 @@
 // service is created first time it is needed and then just reuse it
 // the next time.
 pokemonPlannerApp.factory('Pokemon',function ($resource, $timeout) {
-
- 
     
     // Set the configuration for your app
     // TODO: Replace with your project's config object
