@@ -7,9 +7,9 @@
 				<h3 ng-if="victor.player == null">{{printTurn()}} turn to make a move...</h3>
 				<div ng-if="victor.player == 1 || victor.player == 2">
 					<h3 class="padding20 paddingtop0">Player {{victor.player}} won!</h3>
-					<a  ng-click="reset(false); playConfirm(); playTheme()" class="btn-danger btn-lg margin20" href="#!/search"> Return to Pokédex!</a>
+					<a  ng-click="reset(false); playConfirm();" class="btn-danger btn-lg margin20" href="#!/search"> Return to Pokédex!</a>
 
-					<a ng-click="reset(false); playConfirm(); playTheme()" class="btn btn-success btn-lg margin20" href="#!/history">See history</a>	
+					<a ng-click="reset(false); playConfirm();" class="btn-success btn-lg margin20" href="#!/history">See history</a>	
 				</div>
 			</div>
 			<div class="panel-body">
