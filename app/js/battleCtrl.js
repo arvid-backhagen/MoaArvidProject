@@ -114,8 +114,6 @@ pokemonPlannerApp.controller('BattleCtrl', function ($scope,Pokemon,$firebaseObj
             return ("Waiting for player " + $scope.otherPlayer + "...");
     }
 
-    var refUser = firebase.database().ref().child("users/" + Pokemon.getUser().uid.toString());
-
 
     function writeMatchHistory(playerNum, email, pokemon, opponentPokemon, healthLeft) {
         firebase.database().ref('users/' + userId ).set({

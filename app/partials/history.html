@@ -3,38 +3,38 @@
 <div class="container-fluid">    
 	<div class="row content">
 		<div class="col-sm-9 col-md-9 col-lg-10 col-xl-10">
-			<!--History-->
 			<div class="col-sm-3 col-md-3 col-lg-4 col-xl-4 ">
 				<a class="btn btn-danger btn-lg margintop20" style="margin-bottom:7px;" href="#!/search" >Back to search</a>
 			</div>
-
 			<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 greyColor movesBorder padding20">
-				<h1>Latest battle</h1>
+				<h1 style="text-align: center">Latest battle</h1>
 				<div class="scrollable-menu">
-				<h4 ng-if="hasHistory==false">No battle played yet :(</h4>
+
+				<h4 ng-if="myUser.hasHistory==false">No battle played yet :(</h4>
+
 					<div class="row col-sm-3 col-md-3 col-lg-4 col-xl-4 ">
-						<div ng-if="hasHistory==true" >
+						<div ng-if="myUser.hasHistory==true">
+
+							<h3>{{myUser.email}}</h3>
+
+							<h3 ng-if="myUser.outcome==true">Won!</h3>
+							<h3 ng-if="myUser.outcome==false">Lost</h3>
+							<br/>
+
+							<p>Played as number: {{myUser.playerNum}}</p>
+							<br/>
+
+							<p>With Pokémon: {{myUser.pokemon}}</p>
+							<br/>
+
+							<p>Won against: {{myUser.opponentPokemon}}</p>
 							
-							<h3>{{email}}</h3>
-							<br/>
-
-							<h3 ng-if="checkWinner()==true">Won!</h3>
-							<h3 ng-if="checkWinner()==false">Lost</h3>
-
-							<p>Played as number: {{playerNum}}</p>
-							<br/>
-
-							<p>Your Pokémon: {{pokemon}}</p>
-							<br/>
-
-							<p>Health left: {{healthLeft}}</p>
-							<br/>
-
-							<p>Opponents Pokémon: {{opponentPokemon}}</p>
 							
 
 							
 						<div>
+
+
 					</div>
 				</div>
 				
