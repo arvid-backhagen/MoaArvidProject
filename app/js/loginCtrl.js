@@ -22,6 +22,7 @@ pokemonPlannerApp.controller('LoginCtrl', function ($scope, Pokemon, $firebaseOb
 				// Skapar en user i databasen som ännu inte har någon history:
 				var refUser = firebase.database().ref().child("users/" + user.uid);
 			    $scope.newUser = $firebaseObject(refUser);
+			    $scope.newUser.email = user.email;
 			    $scope.newUser.hasHistory = false;
 			    $scope.newUser.$save();
 

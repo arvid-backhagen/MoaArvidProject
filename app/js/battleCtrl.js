@@ -24,6 +24,8 @@ pokemonPlannerApp.controller('BattleCtrl', function ($scope,Pokemon,$firebaseObj
     var refStatus = firebase.database().ref().child("settings/status");
     $scope.status = $firebaseObject(refStatus);
 
+    var refUser = firebase.database().ref().child("users/" + Pokemon.getUser().uid.toString());
+    $scope.userDB = $firebaseObject(refUser);
 
     $scope.playAttack = function() {
         var audio = new Audio('../audio/sound-reset.m4a');
@@ -53,6 +55,7 @@ pokemonPlannerApp.controller('BattleCtrl', function ($scope,Pokemon,$firebaseObj
         if ($scope.opponentPokemon.pokemon.hp <= 0) {
             $scope.opponentPokemon.pokemon.hp = 0;
             $scope.victor.player = Pokemon.getPlayer();
+            $scope.writeMatchHistory($scope.victor.player, $scope.otherPlayer, true);
             $scope.victor.$save();
         }
         $scope.opponentPokemon.$save();
@@ -92,10 +95,13 @@ pokemonPlannerApp.controller('BattleCtrl', function ($scope,Pokemon,$firebaseObj
     $scope.checkLoser = function(winner) {
         if (winner != 1 && winner != 2)
             return null;
-        if ($scope.otherPlayer != winner)
+        if ($scope.otherPlayer != winner){
             return $scope.otherPlayer;
-        else
+        }
+        else{
+            $scope.writeMatchHistory(Pokemon.getPlayer(), $scope.otherPlayer, false);
             return Pokemon.getPlayer();
+        }
     }
 
     $scope.checkFaintedPokemon = function(winner) {
@@ -114,17 +120,16 @@ pokemonPlannerApp.controller('BattleCtrl', function ($scope,Pokemon,$firebaseObj
             return ("Waiting for player " + $scope.otherPlayer + "...");
     }
 
-    var refUser = firebase.database().ref().child("users/" + Pokemon.getUser().uid.toString());
-
-
-    function writeMatchHistory(playerNum, email, pokemon, opponentPokemon, healthLeft) {
-        firebase.database().ref('users/' + userId ).set({
-            as_player: playerNum,
-            email: email,
-            pokemon_used: pokemon,
-            opponentPokemon: opponentPokemon,
-            healthLeft: healthLeft
-        });
+    $scope.writeMatchHistory = function(playerNum, opponentNum, outcome) {
+        
+        var myRef = firebase.database().ref().child("players/" + playerNum + "/chosenPokemon");
+        var opponentRef = firebase.database().ref().child("players/" + opponentNum + "/chosenPokemon");
+   
+        $scope.userDB.hasHistory = true;
+        $scope.userDB.asPlayer = playerNum;
+        $scope.userDB.victory = outcome;
+        $scope.userDB.pokemonUsed = myRef.pokemon;
+        $scope.userDB.opponentPokemon = opponentRef.pokemon;
+        $scope.userDB.$save();
     }
-
 });
