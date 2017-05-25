@@ -1,6 +1,5 @@
 pokemonPlannerApp.controller('LoginCtrl', function ($scope, Pokemon, $firebaseObject, $location) {
 
-
 	//log in user
 	$scope.login = function() {
 		firebase.auth().signInWithEmailAndPassword($scope.email, $scope.password).then(function(user) {
@@ -20,6 +19,11 @@ pokemonPlannerApp.controller('LoginCtrl', function ($scope, Pokemon, $firebaseOb
 			firebase.auth().signInWithEmailAndPassword($scope.email, $scope.password).then(function(user) {
 				Pokemon.setUser(user);
 				window.location = '#!/home';
+				// Skapar en user i databasen som ännu inte har någon history:
+				var refUser = firebase.database().ref().child("users/" + user.uid);
+			    $scope.newUser = $firebaseObject(refUser);
+			    $scope.newUser.hasHistory = false;
+			    $scope.newUser.$save();
 
 				}).catch(function(error) {
 					var errorMessage = error.message;
