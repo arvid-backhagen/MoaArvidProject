@@ -4,10 +4,11 @@ pokemonPlannerApp.controller('SidebarCtrl', function ($scope,Pokemon, $firebaseA
 
   var refMyPokemon = firebase.database().ref().child("players/" + Pokemon.getPlayer().toString());
 
+  $scope.currUser = firebase.auth().currentUser;
+
   $firebaseArray(refMyPokemon).$loaded().then(function() {
     $scope.myPokemon = $firebaseArray(refMyPokemon);
   });
-
 
   $scope.sortMyPokemon = function() {
     return Pokemon.sort($scope.myPokemon);

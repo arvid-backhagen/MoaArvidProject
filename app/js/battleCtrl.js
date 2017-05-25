@@ -123,11 +123,6 @@ pokemonPlannerApp.controller('BattleCtrl', function ($scope,Pokemon,$firebaseObj
 
     $scope.writeMatchHistory = function(outcome) {
 
-        console.log(outcome);
-        
-        console.log($scope.myPokemon.pokemon);
-        console.log($scope.opponentPokemon.pokemon);
-
         $scope.userDB.hasHistory = true;
         $scope.userDB.asPlayer = Pokemon.getPlayer();
         $scope.userDB.victory = outcome;
