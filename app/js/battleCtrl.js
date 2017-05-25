@@ -24,7 +24,7 @@ pokemonPlannerApp.controller('BattleCtrl', function ($scope,Pokemon,$firebaseObj
     var refStatus = firebase.database().ref().child("settings/status");
     $scope.status = $firebaseObject(refStatus);
 
-    var refUser = firebase.database().ref().child("users/" + Pokemon.getUser().uid.toString());
+    var refUser = firebase.database().ref().child("users/" + Pokemon.getUser().uid);
     $scope.userDB = $firebaseObject(refUser);
 
     $scope.playAttack = function() {
