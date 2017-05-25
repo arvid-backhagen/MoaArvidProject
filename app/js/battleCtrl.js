@@ -27,6 +27,7 @@ pokemonPlannerApp.controller('BattleCtrl', function ($scope,Pokemon,$firebaseObj
     var refUser = firebase.database().ref().child("users/" + Pokemon.getUser().uid);
     $scope.userDB = $firebaseObject(refUser);
 
+
     $scope.playAttack = function() {
         var audio = new Audio('../audio/sound-reset.m4a');
         audio.play();
@@ -55,7 +56,7 @@ pokemonPlannerApp.controller('BattleCtrl', function ($scope,Pokemon,$firebaseObj
         if ($scope.opponentPokemon.pokemon.hp <= 0) {
             $scope.opponentPokemon.pokemon.hp = 0;
             $scope.victor.player = Pokemon.getPlayer();
-            $scope.writeMatchHistory($scope.victor.player, $scope.otherPlayer, true);
+            $scope.writeMatchHistory(true);
             $scope.victor.$save();
         }
         $scope.opponentPokemon.$save();
@@ -99,7 +100,7 @@ pokemonPlannerApp.controller('BattleCtrl', function ($scope,Pokemon,$firebaseObj
             return $scope.otherPlayer;
         }
         else{
-            $scope.writeMatchHistory(Pokemon.getPlayer(), $scope.otherPlayer, false);
+            $scope.writeMatchHistory(false);
             return Pokemon.getPlayer();
         }
     }
@@ -120,16 +121,18 @@ pokemonPlannerApp.controller('BattleCtrl', function ($scope,Pokemon,$firebaseObj
             return ("Waiting for player " + $scope.otherPlayer + "...");
     }
 
-    $scope.writeMatchHistory = function(playerNum, opponentNum, outcome) {
+    $scope.writeMatchHistory = function(outcome) {
+
+        console.log(outcome);
         
-        var myRef = firebase.database().ref().child("players/" + playerNum + "/chosenPokemon");
-        var opponentRef = firebase.database().ref().child("players/" + opponentNum + "/chosenPokemon");
-   
+        console.log($scope.myPokemon.pokemon);
+        console.log($scope.opponentPokemon.pokemon);
+
         $scope.userDB.hasHistory = true;
-        $scope.userDB.asPlayer = playerNum;
+        $scope.userDB.asPlayer = Pokemon.getPlayer();
         $scope.userDB.victory = outcome;
-        $scope.userDB.pokemonUsed = myRef.pokemon;
-        $scope.userDB.opponentPokemon = opponentRef.pokemon;
+        $scope.userDB.pokemonUsed = $scope.myPokemon.pokemon;
+        $scope.userDB.opponentPokemon = $scope.opponentPokemon.pokemon;
         $scope.userDB.$save();
     }
 });
