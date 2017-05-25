@@ -1,22 +1,17 @@
 pokemonPlannerApp.controller('HistoryCtrl', function ($scope,Pokemon,$firebaseObject) {
 
-	//hämta variabler från firebase
-	$scope.playerNum;
-	$scope.email;
-	$scope.pokemon;
-	$scope.opponentPokemon;
-	$scope.healthLeft;
-	$scope.hasHistory;
-
-	$scope.checkWinner = function() {
-	//Kolla vilken pokemon som vann
-		if ($scope.pokemon == "winner" && $scope.opponentPokemon == "loser") {
-			return true;
-		}
-		else {
-			return false;
-		}
+	if (getUser() == firebase.auth().currentUser) {
+		//do something
+	}
+	else {
+		//do something
 	}
 
+
+	//find user in users database
+	var refUser = firebase.database().ref().child("users/" + Pokemon.getUser().uid.toString());
+
+	//create object of user
+	$scope.myUser = $firebaseObject(refUser);
 
 });
