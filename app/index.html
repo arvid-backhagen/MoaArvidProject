@@ -56,43 +56,11 @@
       <a class="navbar-brand" href="#">Pokémon Online</a>
       <p class="navbar-text">Gotta Catch 'Em All!</p>
     </div>
-
-    <div class="col-md-4" ng-controller="HomeCtrl" ng-if="online == true">
-
-        <div id="online">
-            <p class="navbar-text" ng-controller="HomeCtrl" ><i>Logged in as <b>{{currUser()}}</b></i></p>
-            <a id="logOutBtn" class="btn pull-right" href="#/login">Log out</a>
-        </div>
-
+    <div class="col-md-4" ng-controller="HomeCtrl">
+        <p class="navbar-text" ng-controller="HomeCtrl" ng-if="online==true"><i>Logged in as <b>{{currUser()}}</b></i></p>
+        <a id="logOutBtn" ng-controller="HomeCtrl" class="btn pull-right" href="#/login">Log out</a>
     </div>
-
     </nav>
-
-
-    <script>
-
-       //("#loginHtml").load("login.html");    
-
-        //$("#online").hide();
-        
-       // $("#logInBtn").click(function(){
-        //    console.log("show");
-       // $("#online").show();
-        //});
-
-        //$("#logOutBtn").click(function(){
-        //    console.log("hide");
-        //$("#online").hide();
-        //});
-
-
-        document.getElementById("logOutBtn").addEventListener('click', e => {
-            console.log(firebase.auth().currentUser.email);
-            firebase.auth().signOut().then(function(){
-                // Personen har loggat ut gör nåt
-            });
-        });
-    </script>
 
     <!-- ng-view Angular directive is where the partials will be loaded. app.js configures the $routingProvider
     where you specify which partial should be loaded when. -->

@@ -2,22 +2,29 @@
 // display or modify the Movie menu
 pokemonPlannerApp.controller('HomeCtrl', function ($scope,Pokemon, $firebaseObject) {
 
+	//logga ut användaren 
+	 document.getElementById("logOutBtn").addEventListener('click', e => {
+	        firebase.auth().signOut().then(function(){
+	            // Personen har loggat ut gör nåt
+	        });
+	    });
+
+	//variabel att kolla om användaren är inloggad
 	$scope.online = false;
 
 	firebase.auth().onAuthStateChanged(function(user) {
-		console.log("i authstate");
 	    if (user) {
 	      	$scope.online = true;
-	      	console.log("true");
 	    } else {
 			$scope.online = false;
-			console.log("false")
 	    }
 	 });	
 
+	//hämta email från användaren som är online
 	$scope.currUser = function() {
-		if (Pokemon.getUser() != null) {
-			return Pokemon.getUser().email;
+		var curruser = firebase.auth().currentUser;
+		if (curruser != null) {
+			return curruser.email;
 		}
 		else {
 			return null;
