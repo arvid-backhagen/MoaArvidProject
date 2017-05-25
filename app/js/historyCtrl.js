@@ -1,17 +1,14 @@
 pokemonPlannerApp.controller('HistoryCtrl', function ($scope,Pokemon,$firebaseObject) {
 
-	if (getUser() == firebase.auth().currentUser) {
-		//do something
-	}
-	else {
-		//do something
-	}
+	//if (Pokemon.getUser() == firebase.auth().currentUser) {
+	//} else {
+	//}
 
+	var refUser = firebase.database().ref().child("users/" + Pokemon.getUser().uid);
+    $firebaseObject(refUser).$loaded().then(function() {
+    	$scope.myUser = $firebaseObject(refUser)
 
-	//find user in users database
-	var refUser = firebase.database().ref().child("users/" + Pokemon.getUser().uid.toString());
+    });
 
-	//create object of user
-	$scope.myUser = $firebaseObject(refUser);
 
 });
