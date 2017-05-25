@@ -31,17 +31,6 @@ pokemonPlannerApp.factory('Pokemon',function ($resource, $timeout, $firebaseObje
         return user;
     }
 
-    this.checkUser = function() {
-        if (getUser() == firebase.auth().currentUser) {
-            console.log("användarna matchar");
-            return getUser();
-        }
-    }
-
-    this.getUser = function(){
-        return user;
-    }
-
     this.setPlayer = function(newPlayer){
         player = newPlayer;
     }
