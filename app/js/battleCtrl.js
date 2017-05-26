@@ -56,7 +56,8 @@ pokemonPlannerApp.controller('BattleCtrl', function ($scope,Pokemon,$firebaseObj
         if ($scope.opponentPokemon.pokemon.hp <= 0) {
             $scope.opponentPokemon.pokemon.hp = 0;
             $scope.victor.player = Pokemon.getPlayer();
-            $scope.writeMatchHistory(true);
+            console.log($scope.myPokemon.pokemon.hp)
+            $scope.writeMatchHistory(true, $scope.myPokemon.pokemon.hp);
             $scope.victor.$save();
         }
         $scope.opponentPokemon.$save();
@@ -100,7 +101,8 @@ pokemonPlannerApp.controller('BattleCtrl', function ($scope,Pokemon,$firebaseObj
             return $scope.otherPlayer;
         }
         else{
-            $scope.writeMatchHistory(false);
+            console.log($scope.opponentPokemon.pokemon.hp)
+            $scope.writeMatchHistory(false, $scope.opponentPokemon.pokemon.hp);
             return Pokemon.getPlayer();
         }
     }
@@ -121,13 +123,14 @@ pokemonPlannerApp.controller('BattleCtrl', function ($scope,Pokemon,$firebaseObj
             return ("Waiting for player " + $scope.otherPlayer + "...");
     }
 
-    $scope.writeMatchHistory = function(outcome) {
+    $scope.writeMatchHistory = function(outcome, healthLeft) {
 
         $scope.userDB.hasHistory = true;
         $scope.userDB.asPlayer = Pokemon.getPlayer();
         $scope.userDB.victory = outcome;
         $scope.userDB.pokemonUsed = $scope.myPokemon.pokemon;
         $scope.userDB.opponentPokemon = $scope.opponentPokemon.pokemon;
+        $scope.userDB.healthLeft = healthLeft;
         $scope.userDB.$save();
     }
 });
