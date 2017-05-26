@@ -24,14 +24,13 @@
 				</div>
 				<div ng-if="myUser.hasHistory==true">
 					<div class="col-sm-12 text-center">		
-						<h4 ng-if="myUser.victory==true">Your {{myUser.pokemonUsed.name}} won the battle against {{myUser.opponentPokemon.name}}!</h4>
-						<h4 ng-if="myUser.victory==false">Your {{myUser.pokemonUsed.name}} lost the battle against {{myUser.opponentPokemon.name}}!</h4>
+						<h4 ng-if="myUser.victory==true">Your {{myUser.pokemonUsed.name}} won the battle with {{myUser.healthLeft}} HP left against {{myUser.opponentPokemon.name}}!</h4>
+						<h4 ng-if="myUser.victory==false">Your {{myUser.pokemonUsed.name}} lost the battle against {{myUser.opponentPokemon.name}} who had {{myUser.healthLeft}} HP left!</h4>
 						<p>Played as <b>Player {{myUser.asPlayer}}</b></p>
 					</div>
 
 					<div class="col-sm-5 infoBorder text-center">
 						<h3 ng-if="myUser.victory==true">Winner: <span style="color: green;">{{myUser.pokemonUsed.name}}</span>
-						<p>{{myUser.healthLeft}} HP left</p>
 						</h3>
 						
 						<h3 ng-if="myUser.victory==false">Loser: <span style="color: red;">{{myUser.pokemonUsed.name}}</span>
@@ -48,7 +47,8 @@
 					
 					<div class="col-sm-5 infoBorder text-center">
 						<h3 ng-if="myUser.victory==true">Loser: <span style="color: red;">{{myUser.opponentPokemon.name}}</span></h3>
-						<h3 ng-if="myUser.victory==false">Winner: <span style="color: green;">{{myUser.opponentPokemon.name}}</span></h3>
+						<h3 ng-if="myUser.victory==false">Winner: <span style="color: green;">{{myUser.opponentPokemon.name}}
+						</span></h3>
 						<div class="col-sm-6" ng-repeat="type in myUser.opponentPokemon.types">
 							<img src="../images/types/{{type.name}}.png" class="img100" >
 						</div>
