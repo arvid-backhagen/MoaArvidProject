@@ -10,5 +10,8 @@ pokemonPlannerApp.controller('HistoryCtrl', function ($scope,Pokemon,$firebaseOb
 
     });
 
+    $scope.resetVictor = function() {
+    	firebase.database().ref().child("settings/victor").remove();
+  	};
 
 });
