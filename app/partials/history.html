@@ -9,8 +9,16 @@
 
 			<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 greyColor movesBorder padding20">
 
-				<h1 style="text-align: center">Latest battle</h1>
-				<h4 ng-if="myUser.hasHistory==false">No battles played yet :(</h4>
+				<h1 class="text-center">Your latest battle</h1>
+
+				<div ng-if="myUser.hasHistory==false" class="text-center">
+					<h3>No battles played yet :(</h3>
+					<p>
+						If you want to see some history you need to battle first.
+						Try it out!
+					</p>
+					<a class="btn btn-danger btn-lg" href="#!/printPokemonlist" ng-click="resetVictor()" role="button" id="confirmDinner">Battle</a>
+				</div>
 					<div ng-if="myUser.hasHistory==true">		
 						<h4>{{myUser.email}}</h4>
 						<h4 ng-if="myUser.victory==true">Won!</h4>
@@ -18,6 +26,7 @@
 						<br/>
 						<p>Played as number: <b>{{myUser.asPlayer}}</b></p>
 						<br/>
+				
 
 
 
