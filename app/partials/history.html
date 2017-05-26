@@ -10,26 +10,32 @@
 			<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 greyColor movesBorder padding20">
 
 				<h1 style="text-align: center">Latest battle</h1>
-
 				<h4 ng-if="myUser.hasHistory==false">No battles played yet :(</h4>
+					<div ng-if="myUser.hasHistory==true">		
+						<h4>{{myUser.email}}</h4>
+						<h4 ng-if="myUser.victory==true">Won!</h4>
+						<h4 ng-if="myUser.victory==false">Lost</h4>
+						<br/>
+						<p>Played as number: <b>{{myUser.asPlayer}}</b></p>
+						<br/>
 
-					<div class="row col-sm-4 col-md-4 col-lg-4 col-xl-4" ng-if="myUser.hasHistory==true">		
 
-							<h3>{{myUser.email}}</h3>
 
-							<h3 ng-if="myUser.victory==true">Won!</h3>
-							<h3 ng-if="myUser.victory==false">Lost</h3>
-							<br/>
-
-							<p>Played as number: <b>{{myUser.asPlayer}}</b></p>
-							<br/>
-
+						<div class="col-md-5">
 							<p>With Pokémon: <b>{{myUser.pokemonUsed.name}}</b></p>
-							<br/>
+								<img src="../images/types/{{myUser.pokemonUsed.type.name}}.png" class="img100" ng-repeat="type in myUser.pokemonUsed.type">
+							<img ng-src="../images/{{myUser.pokemonUsed.national_id}}.png" alt={{myUser.pokemonUsed.name}} style="max-width: 150%;">
+						</div>
 
+						<div class="col-md-2">
+							<h1><i>VS.</i></h1>
+						</div>
+						
+						<div class="col-md-5">
 							<p>Against Pokémon: <b>{{myUser.opponentPokemon.name}}</b></p>
-
-
+							<img src="../images/types/{{myUser.opponentPokemon.type.name}}.png" class="img100" ng-repeat="type in myUser.opponentPokemon.type">
+							<img ng-src="../images/{{myUser.opponentPokemon.national_id}}.png" alt={{myUser.opponentPokemon.name}} style="max-width: 150%;">
+						</div>
 				</div>
 				
 			</div>
