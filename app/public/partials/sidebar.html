@@ -1,0 +1,46 @@
+<div class="col-sm-3 col-md-3 col-lg-2 col-xl-2 sidenav">
+	<div class="panel panel-danger">
+		<div class="panel-heading">
+			<p><b>{{currUser.email}}'s Pokémon</b></p>
+			<h4>Player {{player}}</h4>
+		</div>
+		<div class="panel-body" id="menuPanelBody">
+			<div ng-repeat="poke in sortMyPokemon()">
+				<div class="row">
+					<div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+						<div class="row text-center">
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+								{{poke.pokemon.name}}
+								<div ng-repeat="type in poke.pokemon.types">
+									<div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 padding0">
+										<img src="../images/types/{{type.name}}.png" alt="Loading..." class="img90">
+									</div>			
+								</div>
+							</div>
+						</div>
+						<div class="row text-center">
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+							<a class="btn btn-danger btn-xs margintop10" href="" role="button" ng-click="release(poke)">Release</a>
+							</div>
+						</div>						
+					</div>
+
+					<div class="col-sm-5 col-md-5 col-lg-5 col-xl-5 padding0">
+						<img src="../images/{{poke.pokemon.national_id}}.png" alt="Loading..." class="img100">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<p class="text-center"><a class="btn btn-danger btn-lg" href="#!/printPokemonlist" ng-click="resetVictor()" role="button" id="confirmDinner">Battle</a></p>	
+
+		<p class="text-center"><a class="btn btn-success btn-lg" href="#!/history" role="button" id="confirmDinner">
+		History</a></p>	
+	</div>
+
+
+
+
+</div>

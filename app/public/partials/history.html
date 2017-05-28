@@ -1,0 +1,61 @@
+<!-- We include the sidebar as it is shared across two screens. -->
+<ng-include src="'partials/sidebar.html'" ng-controller="SidebarCtrl"></ng-include>
+<div class="container-fluid">    
+	<div class="row content">
+		<div class="col-sm-9 col-md-9 col-lg-10 col-xl-10">
+
+			<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 infoBorder padding20">
+				<div class="col-sm-3">
+					<a class="btn btn-danger btn-lg margintop15" href="#!/search">Back to search</a>
+				</div>
+
+				<h1 class="text-center" style="margin-right: 25%">Your latest battle</h1>
+				<br/>
+
+				<div ng-if="myUser.hasHistory==false" class="text-center">
+					<br><br>
+					<h3>Oh no!</h3>
+					<h3>No battles played yet :(</h3>
+					<p>
+						If you want to see some history you need to battle first.
+						Try it out!
+					</p>
+					<a class="btn btn-danger btn-lg" href="#!/printPokemonlist" ng-click="resetVictor()" role="button" id="confirmDinner">Battle</a>
+				</div>
+				<div ng-if="myUser.hasHistory==true">
+					<div class="col-sm-12 text-center">		
+						<h4 ng-if="myUser.victory==true">Your {{myUser.pokemonUsed.name}} won the battle with {{myUser.healthLeft}} HP left against {{myUser.opponentPokemon.name}}!</h4>
+						<h4 ng-if="myUser.victory==false">Your {{myUser.pokemonUsed.name}} lost the battle against {{myUser.opponentPokemon.name}} who had {{myUser.healthLeft}} HP left!</h4>
+						<p>Played as <b>Player {{myUser.asPlayer}}</b></p>
+					</div>
+
+					<div class="col-sm-5 infoBorder text-center">
+						<h3 ng-if="myUser.victory==true">Winner: <span style="color: green;">{{myUser.pokemonUsed.name}}</span>
+						</h3>
+						
+						<h3 ng-if="myUser.victory==false">Loser: <span style="color: red;">{{myUser.pokemonUsed.name}}</span>
+						</h3>	
+						<div class="col-sm-6" ng-repeat="type in myUser.pokemonUsed.types"> 
+							<img src="../images/types/{{type.name}}.png" class="img100" >
+						</div>
+						<img class="col-sm-12" ng-src="../images/{{myUser.pokemonUsed.national_id}}.png" alt={{myUser.pokemonUsed.name}} style="max-width: 150%;">
+					</div>
+
+					<div class="col-md-2 text-center">
+						<h1><i>VS.</i></h1>
+					</div>
+					
+					<div class="col-sm-5 infoBorder text-center">
+						<h3 ng-if="myUser.victory==true">Loser: <span style="color: red;">{{myUser.opponentPokemon.name}}</span></h3>
+						<h3 ng-if="myUser.victory==false">Winner: <span style="color: green;">{{myUser.opponentPokemon.name}}
+						</span></h3>
+						<div class="col-sm-6" ng-repeat="type in myUser.opponentPokemon.types">
+							<img src="../images/types/{{type.name}}.png" class="img100" >
+						</div>
+						<img class="col-sm-12" ng-src="../images/{{myUser.opponentPokemon.national_id}}.png" alt={{myUser.opponentPokemon.name}} style="max-width: 150%;">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

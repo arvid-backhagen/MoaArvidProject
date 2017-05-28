@@ -1,0 +1,32 @@
+<div class="container-fluid">
+	<div class="row text-center">
+		<br><br><br>
+		<h1>Welcome to Pokémon Online!</h1>
+		<h2>To start battling, choose a player</h2><br><br><br>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-xl-offset-1">
+			<a href="#!/search" class="btn btn-block btn-danger btn-lg" ng-click="setPlayer(1);" ng-if="!checkPlayer(1)">
+				<h1>Player 1</h1>
+			</a>
+			<a href="" class="btn btn-block btn-danger btn-lg" ng-if="checkPlayer(1)" ng-disabled="checkPlayer(1)">
+				<h1>Player 1 is taken</h1>
+			</a>
+		</div>
+
+		<div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-xl-offset-1">
+			<a href="#!/search" class="btn btn-block btn-danger btn-lg" ng-click="setPlayer(2);" ng-if="!checkPlayer(2)">
+				<h1>Player 2</h1>
+			</a>
+			<a href="" class="btn btn-block btn-danger btn-lg" ng-if="checkPlayer(2)" ng-disabled="checkPlayer(2)">
+				<h1>Player 2 is taken</h1>
+			</a>
+		</div>
+	</div>
+	
+	<br><br><br><br><br><br><br><br><br><br>
+	<div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 col-sm-offset-11 col-md-offset-11 col-lg-offset-11 col-xl-offset-11">
+		<button class="btn-sm btn-danger" ng-click="resetPlayers();">Reset Players!</button>
+	</div>
+</div>
